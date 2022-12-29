@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <h1 id="foo">Loading</h1>
+    <script>
+        fetch('/foobar').then((response) => response.json()).then(() => {
+            console.log('got response', new Date().toISOString())
+            setTimeout(function() {
+                console.log('modifying h1', new Date().toISOString())
+                document.getElementById('foo').textContent ='Bar'
+            }, 200)
+        })
+    </script>
+</body>
+</html>
